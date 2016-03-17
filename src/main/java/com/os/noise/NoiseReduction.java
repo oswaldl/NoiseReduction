@@ -13,6 +13,7 @@ public class NoiseReduction {
     private static CheckNoise numericNoise = null;
     private static CheckNoise repeatNoise = null;
     private static CheckNoise messyNoise = null;
+    private static NullNoise nullNoise = null;
 
     public static NoiseReduction getInstance(){
         if(instance == null){
@@ -23,6 +24,7 @@ public class NoiseReduction {
                     numericNoise = new NumericNoise();
                     repeatNoise = new RepeatNoise();
                     messyNoise = new MessyNoise();
+                    nullNoise = new NullNoise();
                 }
             }
         }
@@ -30,7 +32,8 @@ public class NoiseReduction {
     }
 
     public boolean isNoise(String text){
-        return punctuationNoise.isNoise(text)
+        return nullNoise.isNoise(text)
+                || punctuationNoise.isNoise(text)
                 || numericNoise.isNoise(text)
                 || repeatNoise.isNoise(text)
                 || messyNoise.isNoise(text);

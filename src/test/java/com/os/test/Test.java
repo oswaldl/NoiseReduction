@@ -1,6 +1,9 @@
 package com.os.test;
 
+import com.os.noise.CheckNoise;
 import com.os.noise.NoiseReduction;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -18,6 +21,9 @@ public class Test {
 
         text = "~!@#$%我^&*(),.;[]";
         assertFalse(NoiseReduction.getInstance().isNoise(text));
+
+        text = null;
+        assertTrue(NoiseReduction.getInstance().isNoise(text));
 
         text = "";
         assertTrue(NoiseReduction.getInstance().isNoise(text));
@@ -42,6 +48,7 @@ public class Test {
 
         text = "hello, i think the world is great!";
         assertTrue(NoiseReduction.getInstance().isNoise(text));
+
 
 
     }
